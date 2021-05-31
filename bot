@@ -1,0 +1,9 @@
+import telebot;
+
+bot =  telebot.TeleBot("1850063312:AAFnYRWU94LrHC2iwbU-Bm-3NfvWAtWcTWs")
+
+@bot.message_handler(commands=['start', 'help'])
+def send_walcome(message):
+    bot.reply_to(message, " Hello ! ")
+
+bot.polling()
