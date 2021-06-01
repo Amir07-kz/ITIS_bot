@@ -1,9 +1,24 @@
-import telebot;
+import telebot
+from telebot import types
 
 bot =  telebot.TeleBot("1850063312:AAFnYRWU94LrHC2iwbU-Bm-3NfvWAtWcTWs")
 
 @bot.message_handler(commands=['start', 'help'])
-def send_walcome(message):
-    bot.reply_to(message, " Hello ! ")
+def start(message):
+    keyboard = types.InlineKeyboardMarkup()
+    url_btn1 = types.InlineKeyboardButton(text="ITIS Request", url="")
+    url_btn2 = types.InlineKeyboardButton(text="Приложения", url="")
+    url_btn3 = types.InlineKeyboardButton(text="Добровольничество", url="")
+    url_btn4 = types.InlineKeyboardButton(text="Культмасса", url="")
+    url_btn5 = types.InlineKeyboardButton(text="Научная деятельность", url="")
+    url_btn6 = types.InlineKeyboardButton(text="Спорт", url="")
+    url_btn7 = types.InlineKeyboardButton(text="Профбюро", url="")
+    url_btn8 = types.InlineKeyboardButton(text="Медиа", url="")
+    url_btn9 = types.InlineKeyboardButton(text="Волонтерства", url="")
+    url_btn10 = types.InlineKeyboardButton(text="Наставничество", url="")
+    url_btn11 = types.InlineKeyboardButton(text="Анонс*", url="")
 
-bot.polling()
+    keyboard.add(url_btn1,url_btn2,url_btn3,url_btn4,url_btn5,url_btn6,url_btn7,url_btn8,url_btn9,url_btn10,url_btn11,)
+    bot.send_message(message.chat.id, "Какая информация необходима?", reply_markup=keyboard)
+
+bot.polling(none_stop=True)
